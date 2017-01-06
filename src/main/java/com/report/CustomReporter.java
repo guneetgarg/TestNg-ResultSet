@@ -89,39 +89,5 @@ public class CustomReporter implements IReporter {
 			}
 		}
 
-		PdfCreate create = new PdfCreate("automation1.pdf");
-		create.titlePdf("Automation Report");
-		hmap.put("Total", String.valueOf(RD.getPassCount() + RD.getFailCount() + RD.getSkipCount()));
-		hmap.put("Passed", RD.getPassCount().toString());
-		hmap.put("Failed", RD.getFailCount().toString());
-		hmap.put("Skipped", RD.getSkipCount().toString());
-
-		DefaultPieDataset dataSet = new DefaultPieDataset();
-		dataSet.setValue("Failed", RD.getFailCount());
-		dataSet.setValue("Skipped", RD.getSkipCount());
-		dataSet.setValue("Passed", RD.getPassCount());
-
-		new Graph().generateChart(dataSet);
-		create.createTable(hmap);
-		create.addNewLine(2);
-
-		create.addImage("chart.png");
-		if (RD.getPassedList().size() > 0) {
-			create.newPage();
-			create.writePassData(RD.getPassedList());
-		}
-
-		if (RD.getFailesList().size() > 0) {
-			create.newPage();
-			create.writeFailData(RD.getFailesList());
-		}
-
-		if (RD.getSkippedList().size() > 0) {
-			create.newPage();
-			create.writeSkipData(RD.getSkippedList());
-		}
-
-		create.closeDocument();
-
 	}
 }
