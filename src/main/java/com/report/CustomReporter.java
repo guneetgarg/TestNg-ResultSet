@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.jfree.data.general.DefaultPieDataset;
 import org.testng.IReporter;
 import org.testng.IResultMap;
 import org.testng.ISuite;
