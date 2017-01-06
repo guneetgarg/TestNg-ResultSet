@@ -1,0 +1,35 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Simple Reporter Suite">
+
+	<listeners>
+		<listener class-name="com.report.CustomReporter" />
+	</listeners>
+
+	<test name="Simple Reporter test 1 ">
+		<classes>
+			<class name="com.demo.script.AmazonTests" />
+		</classes>
+	</test>
+
+	<test name="Simple Reporter test 2 ">
+		<classes>
+			<class
+				name="com.demo.script.DeepalicrDSConfirmapointmentfrompatientreminderscreen" />
+		</classes>
+	</test>
+
+	<test name="Simple Reporter test 3 ">
+		<classes>
+			<class name="com.demo.script.copy.SmitjainSkipCountTest" />
+		</classes>
+	</test>
+
+	<test name="Simple Reporter test 4 ">
+		<classes>
+			<class name="com.demo.script.copy.SunalpsTest" />
+		</classes>
+	</test>
+
+</suite>
+
