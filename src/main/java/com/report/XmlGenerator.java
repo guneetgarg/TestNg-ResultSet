@@ -26,15 +26,46 @@ public class XmlGenerator {
 			Element rootElement = doc.createElementNS("http://www.journaldev.com/employee", "Employees");
 			// append root element to document
 			doc.appendChild(rootElement);
-			Element passtest= doc.createElement("pass-set");
+			Element passtest = doc.createElement("pass-set");
 			rootElement.appendChild(passtest);
 			// append first child element to root element
-			rootElement.appendChild(getEmployee(doc, "1", "Pankaj", "29", "Java Developer", "Male"));
+			passtest.appendChild(getEmployee(doc, "1", "Pankaj", "29", "Java Developer", "Male"));
 
 			// append second child
-			rootElement.appendChild(getEmployee(doc, "2", "Lisa", "35", "Manager", "Female"));
-			rootElement.appendChild(getEmployee(doc, "33", "Lisa", "35", "Manager", "Female"));
+			passtest.appendChild(getEmployee(doc, "2", "Lisa", "35", "Manager", "Female"));
+			passtest.appendChild(getEmployee(doc, "33", "Lisa", "35", "Manager", "Female"));
 
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			Element failtest = doc.createElement("fail-set");
+			rootElement.appendChild(failtest);
+			// append first child element to root element
+			failtest.appendChild(getEmployee(doc, "1", "Pankaj", "29", "Java Developer", "Male"));
+
+			// append second child
+			failtest.appendChild(getEmployee(doc, "2", "Lisa", "35", "Manager", "Female"));
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			// for output to file, console
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
