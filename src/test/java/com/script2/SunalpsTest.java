@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.demo.script;
+package com.script2;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DeepalicrDSConfirmapointmentfrompatientreminderscreen {
+public class SunalpsTest {
 
 	@Test
-	public void testQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQA() {
+	public void testA() {
 		Assert.assertEquals("A", "B");
 	}
 

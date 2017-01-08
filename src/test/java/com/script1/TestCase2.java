@@ -1,4 +1,4 @@
-package com.demo.script;
+package com.script1;
 
 import org.testng.Assert;
 import static org.testng.Assert.assertTrue;
@@ -6,7 +6,7 @@ import org.testng.Reporter;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
-public class GoogleTest {
+public class TestCase2 {
 
 	@Test(testName = "Custom Google test name1")
 	public void GooglePage1Test(String name) {
