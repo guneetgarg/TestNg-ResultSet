@@ -1,9 +1,7 @@
 package com.script1;
 
-import org.testng.Assert;
 import static org.testng.Assert.assertTrue;
-import org.testng.Reporter;
-import org.testng.SkipException;
+
 import org.testng.annotations.Test;
 
 public class TestCase1 {
@@ -18,7 +16,7 @@ public class TestCase1 {
 		assertTrue(true);
 	}
 
-	@Test(description = "test descriptionC")
+	@Test(groups = { "bonding", "strong_ties" })	//(description = "test descriptionC")
 	public void PageCTest() {
 		assertTrue(true);
 	}
