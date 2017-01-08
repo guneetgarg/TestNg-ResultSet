@@ -39,9 +39,15 @@ public class TestCase4 {
 	}
 
 	@Test
-	public void TC4TT() {
-		Reporter.log("TestCase4 -> Test");
-		System.out.println("TestCase4 -> Test");
+	public void TC4TT1() {
+		Reporter.log("TestCase4 -> Test 1");
+		System.out.println("TestCase4 -> Test 1");
+	}
+	
+	@Test
+	public void TC4TT2() {
+		Reporter.log("TestCase4 -> Test 2");
+		System.out.println("TestCase4 -> Test 2");
 	}
 
 	@BeforeMethod

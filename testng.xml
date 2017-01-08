@@ -6,30 +6,38 @@
 		<listener class-name="com.report.CustomReporter" />
 	</listeners>
 
-	<test name="Simple Reporter test 1 ">
+
+	<test name="d">
 		<classes>
-			<class name="com.demo.script.AmazonTests" />
+			<class name="com.script2.TestCase4" />
 		</classes>
 	</test>
 
-	<test name="Simple Reporter test 2 ">
-		<classes>
-			<class
-				name="com.demo.script.DeepalicrDSConfirmapointmentfrompatientreminderscreen" />
-		</classes>
-	</test>
+	<!-- <test name="Simple Reporter test 1 "> -->
+	<!-- <classes> -->
+	<!-- <class name="com.demo.script.AmazonTests" /> -->
+	<!-- </classes> -->
+	<!-- </test> -->
 
-	<test name="Simple Reporter test 3 ">
-		<classes>
-			<class name="com.demo.script.copy.SmitjainSkipCountTest" />
-		</classes>
-	</test>
+	<!-- <test name="Simple Reporter test 2 "> -->
+	<!-- <classes> -->
+	<!-- <class -->
+	<!-- name="com.demo.script.DeepalicrDSConfirmapointmentfrompatientreminderscreen" 
+		/> -->
+	<!-- </classes> -->
+	<!-- </test> -->
 
-	<test name="Simple Reporter test 4 ">
-		<classes>
-			<class name="com.demo.script.copy.SunalpsTest" />
-		</classes>
-	</test>
+	<!-- <test name="Simple Reporter test 3 "> -->
+	<!-- <classes> -->
+	<!-- <class name="com.demo.script.copy.SmitjainSkipCountTest" /> -->
+	<!-- </classes> -->
+	<!-- </test> -->
+
+	<!-- <test name="Simple Reporter test 4 "> -->
+	<!-- <classes> -->
+	<!-- <class name="com.demo.script.copy.SunalpsTest" /> -->
+	<!-- </classes> -->
+	<!-- </test> -->
 
 </suite>
 
