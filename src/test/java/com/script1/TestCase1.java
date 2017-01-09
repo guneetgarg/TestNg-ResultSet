@@ -9,38 +9,37 @@ import org.testng.annotations.Test;
 public class TestCase1 {
 
 	@Test(description = "TestCase1 description A")
-	public void PageATest() {
+	public void PageATest1() {
 		assertTrue(true);
 	}
 
-	@Test()
-	public void PageBTest() {
+	@Test(groups = "group TestCase1")
+	public void PageATest2() {
 		assertTrue(true);
 	}
 
-	@Test(groups = { "bonding", "strong_ties" }) // (description = "test													// descriptionC")
-	public void PageCTest() {
+	@Test(groups = { "bonding", "strong_ties" })
+	public void PageATest3() {
 		assertTrue(true);
 	}
 
 	@Test(description = "test description")
-	public void Page4Test() {
+	public void PageATest4() {
 		throw new SkipException("Skipping - This is not ready for testing ");
 	}
 
-	@Test(description = "Lorem ipsum  tellus in aliquam bibendum")
-	public void Page1Test1() {
+	@Test(description = " description PageATest5", groups = "group TestCase1")
+	public void PageATest5() {
 		Assert.assertEquals(true, false, "FAILED QWERTYUHGCZXCGHGFD");
 	}
 
-	@Test(description = "test description")
-	public void Page2Test1() throws InterruptedException {
+	@Test(description = "test description PageATest6", groups = "group TestCase1")
+	public void PageATest6() throws InterruptedException {
 		throw new SkipException("Skipping - This is not ready for testing ");
 	}
 
-	@Test(description = "test description4")
-	public void Page3Test1() {
-		System.out.println("Page3Test WAS CALLED");
+	@Test(description = "test description4 PageATest7")
+	public void PageATest7() {
 		throw new SkipException("Skipping - This is not ready for testing ");
 	}
 

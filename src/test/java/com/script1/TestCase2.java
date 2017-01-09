@@ -15,7 +15,6 @@ public class TestCase2 {
 
 	@Test
 	public void PageBTest2() {
-		Reporter.log("Google WAS CALLED");
 		assertTrue(true);
 	}
 
