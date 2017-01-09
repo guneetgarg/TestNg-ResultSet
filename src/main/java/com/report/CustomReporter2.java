@@ -23,6 +23,25 @@ public class CustomReporter2 implements IReporter {
 		System.out.println("Skipped Test Case -> " + context.getSkippedTests().size());
 	}
 	
+	public void getData(ITestResult testResult) {
+		System.out.println(" ");
+		System.out.println("============================================");
+		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "+ ReportUtil.getTime(testResult.getEndMillis()));
+		System.out.println("Package  ->   " + testResult.getInstanceName());
+		System.out.println("Method Name -> "+ testResult.getName());
+		if (testResult.getMethod().getDescription() != null)
+			System.out.println("Description --> "+testResult.getName() + "  -> " + testResult.getMethod().getDescription());
+		else {
+			System.out.println("No Description");
+		}
+		String[] tcGroup = testResult.getMethod().getGroups();
+		System.out.print("Number of Group --> " + tcGroup.length);
+		for (String ss : tcGroup) {
+			System.out.print(ss + ",  ");
+		}
+	}
+	
+	
 	LinkedHashMap<String, String> hmap = new LinkedHashMap<String, String>();
 	ResultData RD = new ResultData();
 
@@ -53,21 +72,22 @@ public class CustomReporter2 implements IReporter {
 				if (testsPassed.size() > 0) {
 					System.out.println("---"+ testsPassed.size());
 					for (ITestResult testResult : testsPassed) {
-						System.out.println("-----------------------------");
-						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
-						System.out.print(" Package  ->   "+testResult.getInstanceName()+" --> ");
-						System.out.print(testResult.getName());
-						if (testResult.getMethod().getDescription() != null)
-							System.out.print(testResult.getName()+"  -> "+testResult.getMethod().getDescription());
-						else {
-							RD.setPassedList(" ");
-						}
-						String[] tcGroup = testResult.getMethod().getGroups();
-						System.out.println("Length  "+tcGroup.length);
-						for (String ss : tcGroup) {
-							System.out.print(ss + ",  ");
-						}
-						System.out.println(" ");
+						getData(testResult);
+//						System.out.println("-----------------------------");
+//						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
+//						System.out.print(" Package  ->   "+testResult.getInstanceName()+" --> ");
+//						System.out.print(testResult.getName());
+//						if (testResult.getMethod().getDescription() != null)
+//							System.out.print(testResult.getName()+"  -> "+testResult.getMethod().getDescription());
+//						else {
+//							RD.setPassedList(" ");
+//						}
+//						String[] tcGroup = testResult.getMethod().getGroups();
+//						System.out.println("Length  "+tcGroup.length);
+//						for (String ss : tcGroup) {
+//							System.out.print(ss + ",  ");
+//						}
+//						System.out.println(" ");
 					}
 				}
 
