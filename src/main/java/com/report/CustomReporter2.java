@@ -43,9 +43,8 @@ public class CustomReporter2 implements IReporter {
 				if (testsPassed.size() > 0) {
 					for (ITestResult testResult : testsPassed) {
 						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
-						RD.setPassedList(ReportUtil.getTime(testResult.getStartMillis()));
-						RD.setPassedList(ReportUtil.getPackageName(testResult.getInstanceName()));
-						RD.setPassedList(testResult.getName());
+						System.out.println("Package  ->   "+testResult.getInstanceName());
+						System.out.println(testResult.getName());
 						if (testResult.getMethod().getDescription() != null)
 							System.out.println(testResult.getName()+"  -> "+testResult.getMethod().getDescription());
 						else {
@@ -60,10 +59,12 @@ public class CustomReporter2 implements IReporter {
 				}
 
 				// Failed Test Case
-				IResultMap failedResult = testContext.getFailedTests();
+			/*	IResultMap failedResult = testContext.getFailedTests();
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
 					for (ITestResult testResult : testsFailed) {
+						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
+
 						RD.setFailedList(ReportUtil.getTime(testResult.getStartMillis()));
 						RD.setFailedList(ReportUtil.getPackageName(testResult.getInstanceName()));
 						RD.setFailedList(testResult.getName());
@@ -79,13 +80,14 @@ public class CustomReporter2 implements IReporter {
 						}
 					}
 
-				}
+				}*/
 
 				// SkipTest Case
-				IResultMap skipResult = testContext.getSkippedTests();
+			/*	IResultMap skipResult = testContext.getSkippedTests();
 				Set<ITestResult> testsSkip = skipResult.getAllResults();
 				if (testsSkip.size() > 0) {
 					for (ITestResult testResult : testsSkip) {
+						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
 						RD.setSkippedList(ReportUtil.getTime(testResult.getStartMillis()));
 						RD.setSkippedList(ReportUtil.getPackageName(testResult.getInstanceName()));
 						RD.setSkippedList(testResult.getName());
@@ -99,8 +101,7 @@ public class CustomReporter2 implements IReporter {
 							System.out.println(ss);
 						}
 					}
-				}
-
+				}*/
 			}
 		}
 
