@@ -15,6 +15,7 @@
  */
 package com.script2;
 
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -28,6 +29,11 @@ public class TestCase4 {
 
 	@BeforeTest
 	public void TC4BT() {
+		try {
+			Assert.assertEquals("title", "var");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("TestCase4 -> Before Test");
 	}
 

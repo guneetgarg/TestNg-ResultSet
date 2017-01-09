@@ -5,6 +5,7 @@
 	<listeners>
 		<listener class-name="com.report.CustomReporter2" />
 	</listeners>
+	<parameter name="config-file" value="config.properties"/>
 	<test name="Scenario 1">
 		<classes>
 			<class name="com.script1.TestCase1" />
