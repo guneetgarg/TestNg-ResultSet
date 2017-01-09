@@ -22,9 +22,9 @@ public class CustomReporter2 implements IReporter {
 
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
 		for (ISuite suite : iSuite) {
-
+			
 			Map<String, ISuiteResult> suiteResults = suite.getResults();
-
+			
 			for (String testName : suiteResults.keySet()) {
 				ISuiteResult suiteResult = suiteResults.get(testName);
 
@@ -42,11 +42,12 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsPassed = passResult.getAllResults();
 				if (testsPassed.size() > 0) {
 					for (ITestResult testResult : testsPassed) {
+						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
 						RD.setPassedList(ReportUtil.getTime(testResult.getStartMillis()));
 						RD.setPassedList(ReportUtil.getPackageName(testResult.getInstanceName()));
 						RD.setPassedList(testResult.getName());
 						if (testResult.getMethod().getDescription() != null)
-							RD.setPassedList(testResult.getMethod().getDescription());
+							System.out.println(testResult.getName()+"  -> "+testResult.getMethod().getDescription());
 						else {
 							RD.setPassedList(" ");
 						}

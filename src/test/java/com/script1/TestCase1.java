@@ -14,7 +14,8 @@ public class TestCase1 {
 	}
 
 	@Test(groups = "group TestCase1")
-	public void PageATest2() {
+	public void PageATest2() throws InterruptedException {
+		Thread.sleep(5000);
 		assertTrue(true);
 	}
 
