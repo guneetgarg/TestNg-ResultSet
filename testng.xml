@@ -3,7 +3,7 @@
 <suite name="Simple Reporter Suite">
 
 	<listeners>
-		<listener class-name="com.report.CustomReporter" />
+		<listener class-name="com.report.CustomReporter2" />
 	</listeners>
 	<test name="Scenario 1">
 		<classes>

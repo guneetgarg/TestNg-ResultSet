@@ -14,7 +14,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.xml.XmlSuite;
 
-public class CustomReporter implements IReporter {
+public class CustomReporter2 implements IReporter {
 	LinkedHashMap<String, String> hmap = new LinkedHashMap<String, String>();
 	ResultData RD = new ResultData();
 
@@ -50,6 +50,11 @@ public class CustomReporter implements IReporter {
 						else {
 							RD.setPassedList(" ");
 						}
+						String[] tcGroup = testResult.getMethod().getGroups();
+						for (String ss : tcGroup) {
+							System.out.println(ss);
+						}
+
 					}
 				}
 
@@ -66,7 +71,13 @@ public class CustomReporter implements IReporter {
 						} else {
 							RD.setFailedList(" ");
 						}
+						System.out.println(" ");
+						String[] tcGroup = testResult.getMethod().getGroups();
+						for (String ss : tcGroup) {
+							System.out.print(ss+",  ");
+						}
 					}
+
 				}
 
 				// SkipTest Case
@@ -81,6 +92,10 @@ public class CustomReporter implements IReporter {
 							RD.setSkippedList(testResult.getThrowable().toString());
 						} else {
 							RD.setSkippedList(" ");
+						}
+						String[] tcGroup = testResult.getMethod().getGroups();
+						for (String ss : tcGroup) {
+							System.out.println(ss);
 						}
 					}
 				}
