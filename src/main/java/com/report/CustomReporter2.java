@@ -21,11 +21,6 @@ public class CustomReporter2 implements IReporter {
 		System.out.println("Passed Test Case -> " + context.getPassedTests().size());
 		System.out.println("Failed Test Case -> " + context.getFailedTests().size());
 		System.out.println("Skipped Test Case -> " + context.getSkippedTests().size());
-
-		System.out.println("getSkippedConfigurations Test Case -> " + context.getSkippedConfigurations().size());
-		System.out.println("getFailedConfigurations Test Case -> " + context.getFailedConfigurations().size());
-		System.out.println("getPassedConfigurations Test Case -> " + context.getPassedConfigurations().size());
-
 	}
 
 	public void getData(ITestResult testResult, String res) {
@@ -90,7 +85,7 @@ public class CustomReporter2 implements IReporter {
 				}
 
 				// Failed Test Case
-				System.out.println("____________________________________________________________________________");
+				System.out.println("______________________Failed Case______________________________________________________");
 				IResultMap failedResult = testContext.getFailedTests();
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
