@@ -59,12 +59,6 @@ public class CustomReporter2 implements IReporter {
 				getResultSize(testContext);
 				
 				
-//				System.out.println("Passed Test Case -> " + testContext.getPassedTests().size());
-//				System.out.println("Failed Test Case -> " + testContext.getFailedTests().size());
-//				System.out.println("Skipped Test Case -> " + testContext.getSkippedTests().size());
-
-				// hmap.put("Start Time",testContext.getStartDate().toString());
-				// hmap.put("End Time",testContext.getEndDate().toString());
 
 				// pass
 				IResultMap passResult = testContext.getPassedTests();
@@ -73,26 +67,11 @@ public class CustomReporter2 implements IReporter {
 					System.out.println("---"+ testsPassed.size());
 					for (ITestResult testResult : testsPassed) {
 						getData(testResult);
-//						System.out.println("-----------------------------");
-//						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
-//						System.out.print(" Package  ->   "+testResult.getInstanceName()+" --> ");
-//						System.out.print(testResult.getName());
-//						if (testResult.getMethod().getDescription() != null)
-//							System.out.print(testResult.getName()+"  -> "+testResult.getMethod().getDescription());
-//						else {
-//							RD.setPassedList(" ");
-//						}
-//						String[] tcGroup = testResult.getMethod().getGroups();
-//						System.out.println("Length  "+tcGroup.length);
-//						for (String ss : tcGroup) {
-//							System.out.print(ss + ",  ");
-//						}
-//						System.out.println(" ");
 					}
 				}
 
 				// Failed Test Case
-			/*	IResultMap failedResult = testContext.getFailedTests();
+				IResultMap failedResult = testContext.getFailedTests();
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
 					for (ITestResult testResult : testsFailed) {
@@ -113,7 +92,7 @@ public class CustomReporter2 implements IReporter {
 						}
 					}
 
-				}*/
+				}
 
 				// SkipTest Case
 			/*	IResultMap skipResult = testContext.getSkippedTests();
