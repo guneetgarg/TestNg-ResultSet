@@ -29,11 +29,7 @@ public class TestCase4 {
 
 	@BeforeTest
 	public void TC4BT() {
-		try {
-			Assert.assertEquals("title", "var");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Assert.assertEquals("title", "var");
 		System.out.println("TestCase4 -> Before Test");
 	}
 
