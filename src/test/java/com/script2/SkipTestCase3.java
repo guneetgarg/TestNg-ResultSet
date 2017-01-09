@@ -27,4 +27,8 @@ public class SkipTestCase3 {
 	public void skipATest4() {
 		throw new SkipException("Skipping - This is not ready for testing ");
 	}
+	
+	@Test(description = "Laliquam bibendum")
+	public void Test3Passed() {
+	}
 }

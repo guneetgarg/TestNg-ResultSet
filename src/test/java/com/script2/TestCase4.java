@@ -44,7 +44,7 @@ public class TestCase4 {
 		System.out.println("TestCase4 -> Test 1");
 	}
 	
-	@Test
+	@Test(groups="ABC")
 	public void TC4TT2() {
 		Reporter.log("TestCase4 -> Test 2");
 		System.out.println("TestCase4 -> Test 2");

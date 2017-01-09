@@ -51,9 +51,11 @@ public class CustomReporter2 implements IReporter {
 				IResultMap passResult = testContext.getPassedTests();
 				Set<ITestResult> testsPassed = passResult.getAllResults();
 				if (testsPassed.size() > 0) {
+					System.out.println("---"+ testsPassed.size());
 					for (ITestResult testResult : testsPassed) {
+						System.out.println("-----------------------------");
 						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
-						System.out.print(" Package  ->   "+testResult.getInstanceName());
+						System.out.print(" Package  ->   "+testResult.getInstanceName()+" --> ");
 						System.out.print(testResult.getName());
 						if (testResult.getMethod().getDescription() != null)
 							System.out.print(testResult.getName()+"  -> "+testResult.getMethod().getDescription());
@@ -61,10 +63,11 @@ public class CustomReporter2 implements IReporter {
 							RD.setPassedList(" ");
 						}
 						String[] tcGroup = testResult.getMethod().getGroups();
+						System.out.println("Length  "+tcGroup.length);
 						for (String ss : tcGroup) {
 							System.out.print(ss + ",  ");
 						}
-
+						System.out.println(" ");
 					}
 				}
 
