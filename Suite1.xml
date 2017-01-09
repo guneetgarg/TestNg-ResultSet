@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Simple Reporter Suite">
+<suite name="Simple Reporter Suite 1">
 
 	<test name="Scenario 1">
 		<classes>
