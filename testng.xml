@@ -5,8 +5,6 @@
 	<listeners>
 		<listener class-name="com.report.CustomReporter" />
 	</listeners>
-
-
 	<test name="Scenario 1">
 		<classes>
 			<class name="com.script1.TestCase1" />
@@ -19,7 +17,6 @@
 			<class name="com.script2.TestCase4" />
 		</classes>
 	</test>
-
-
+	
 </suite>
 

@@ -50,6 +50,11 @@ public class CustomReporter implements IReporter {
 						else {
 							RD.setPassedList(" ");
 						}
+						String[] tcGroup = testResult.getMethod().getGroups();
+						for (String ss : tcGroup) {
+							System.out.println(ss);
+						}
+
 					}
 				}
 
@@ -66,7 +71,13 @@ public class CustomReporter implements IReporter {
 						} else {
 							RD.setFailedList(" ");
 						}
+						System.out.println(" ");
+						String[] tcGroup = testResult.getMethod().getGroups();
+						for (String ss : tcGroup) {
+							System.out.print(ss+",  ");
+						}
 					}
+
 				}
 
 				// SkipTest Case
@@ -81,6 +92,10 @@ public class CustomReporter implements IReporter {
 							RD.setSkippedList(testResult.getThrowable().toString());
 						} else {
 							RD.setSkippedList(" ");
+						}
+						String[] tcGroup = testResult.getMethod().getGroups();
+						for (String ss : tcGroup) {
+							System.out.println(ss);
 						}
 					}
 				}
