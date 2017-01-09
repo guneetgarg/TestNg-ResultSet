@@ -30,9 +30,9 @@ public class CustomReporter2 implements IReporter {
 
 				ITestContext testContext = suiteResult.getTestContext();
 
-				RD.setPassCount(testContext.getPassedTests().size());
-				RD.setFailCount(testContext.getFailedTests().size());
-				RD.setSkipCount(testContext.getSkippedTests().size());
+				System.out.println("Passed Test Case -> " + testContext.getPassedTests().size());
+				System.out.println("Failed Test Case -> " + testContext.getFailedTests().size());
+				System.out.println("Skipped Test Case -> " + testContext.getSkippedTests().size());
 
 				// hmap.put("Start Time",testContext.getStartDate().toString());
 				// hmap.put("End Time",testContext.getEndDate().toString());
@@ -74,7 +74,7 @@ public class CustomReporter2 implements IReporter {
 						System.out.println(" ");
 						String[] tcGroup = testResult.getMethod().getGroups();
 						for (String ss : tcGroup) {
-							System.out.print(ss+",  ");
+							System.out.print(ss + ",  ");
 						}
 					}
 
