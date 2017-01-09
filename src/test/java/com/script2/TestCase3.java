@@ -3,7 +3,7 @@ package com.script2;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
-public class SmitjainSkipCountTest {
+public class TestCase3 {
 
 	@Test()
 	public void skip1Test() {
