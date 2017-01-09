@@ -103,7 +103,6 @@ public class CustomReporter2 implements IReporter {
 						try {
 							i = testResult.getThrowable().toString().length();
 						} catch (Exception e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						System.out.println(i + "*********");
