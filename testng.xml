@@ -1,23 +1,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Simple Reporter Suite">
+<suite name="Simple Reporter">
 
 	<listeners>
 		<listener class-name="com.report.CustomReporter2" />
 	</listeners>
-	<parameter name="config-file" value="config.properties"/>
-	<test name="Scenario 1">
-		<classes>
-			<class name="com.script1.TestCase1" />
-			<class name="com.script1.TestCase2" />
-		</classes>
-	</test>
-	<test name="Scenario 2">
-		<classes>
-			<class name="com.script2.SkipTestCase3" />
-			<class name="com.script2.TestCase4" />
-		</classes>
-	</test>
+	<parameter name="config-file" value="config.properties" />
 	
+	<suite-files>
+		<suite-file path="Suite1.xml" />
+		<suite-file path="Suite2.xml" />
+	</suite-files>
+
 </suite>
 

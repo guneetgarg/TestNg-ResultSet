@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Simple Reporter Suite 2">
+
+	<test name="Scenario 2">
+		<classes>
+			<class name="com.script2.SkipTestCase3" />
+			<class name="com.script2.TestCase4" />
+		</classes>
+	</test>
+
+</suite>
+
