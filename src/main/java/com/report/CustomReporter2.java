@@ -65,11 +65,12 @@ public class CustomReporter2 implements IReporter {
 				if (testsPassed.size() > 0) {
 					System.out.println("---" + testsPassed.size());
 					for (ITestResult testResult : testsPassed) {
-						// getData(testResult);
+					//	getData(testResult);
 					}
 				}
 
 				// Failed Test Case
+				System.out.println("____________________________________________________________________________");
 				IResultMap failedResult = testContext.getFailedTests();
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
@@ -84,7 +85,7 @@ public class CustomReporter2 implements IReporter {
 
 				}
 
-				System.out.println("______________________________________");
+				System.out.println("____________________________________________________________________________");
 				// SkipTest Case
 				IResultMap skipResult = testContext.getSkippedTests();
 				Set<ITestResult> testsSkip = skipResult.getAllResults();

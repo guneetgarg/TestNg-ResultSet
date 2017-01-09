@@ -28,49 +28,41 @@ public class TestCase4 {
 
 	@BeforeTest
 	public void TC4BT() {
-		Reporter.log("TestCase4 -> Before Test");
 		System.out.println("TestCase4 -> Before Test");
 	}
 
 	@AfterTest
 	public void TC4AT() {
-		Reporter.log("TestCase4 -> After Test");
 		System.out.println("TestCase4 -> After Test");
 	}
 
 	@Test
 	public void TC4TT1() {
-		Reporter.log("TestCase4 -> Test 1");
 		System.out.println("TestCase4 -> Test 1");
 	}
-	
-	@Test(groups="ABC")
+
+	@Test(groups = "ABC")
 	public void TC4TT2() {
-		Reporter.log("TestCase4 -> Test 2");
 		System.out.println("TestCase4 -> Test 2");
 	}
 
 	@BeforeMethod
 	public void TC4BM() {
-		Reporter.log("TestCase4 -> Before Method");
 		System.out.println("TestCase4 -> Before Method");
 	}
 
 	@AfterMethod
 	public void TC4AM() {
-		Reporter.log("TestCase4 -> After Method");
 		System.out.println("TestCase4 -> After Method");
 	}
 
 	@BeforeClass
 	public void TC4BC() {
-		Reporter.log("TestCase4 -> Before Class");
 		System.out.println("TestCase4 -> Before Class");
 	}
 
 	@AfterClass
 	public void TC4AC() {
-		Reporter.log("TestCase4 -> After Class");
 		System.out.println("TestCase4 -> After Class");
 	}
 
