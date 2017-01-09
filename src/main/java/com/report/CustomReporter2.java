@@ -15,22 +15,24 @@ import org.testng.ITestResult;
 import org.testng.xml.XmlSuite;
 
 public class CustomReporter2 implements IReporter {
-	
-	public void getResultSize(ITestContext context){
+
+	public void getResultSize(ITestContext context) {
 		System.out.println("\n***********************************************");
 		System.out.println("Passed Test Case -> " + context.getPassedTests().size());
 		System.out.println("Failed Test Case -> " + context.getFailedTests().size());
 		System.out.println("Skipped Test Case -> " + context.getSkippedTests().size());
 	}
-	
+
 	public void getData(ITestResult testResult) {
 		System.out.println(" ");
 		System.out.println("============================================");
-		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "+ ReportUtil.getTime(testResult.getEndMillis()));
+		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "
+				+ ReportUtil.getTime(testResult.getEndMillis()));
 		System.out.println("Package  ->   " + testResult.getInstanceName());
-		System.out.println("Method Name -> "+ testResult.getName());
+		System.out.println("Method Name -> " + testResult.getName());
 		if (testResult.getMethod().getDescription() != null)
-			System.out.println("Description --> "+testResult.getName() + "  -> " + testResult.getMethod().getDescription());
+			System.out.println(
+					"Description --> " + testResult.getName() + "  -> " + testResult.getMethod().getDescription());
 		else {
 			System.out.println("No Description");
 		}
@@ -40,8 +42,7 @@ public class CustomReporter2 implements IReporter {
 			System.out.print(ss + ",  ");
 		}
 	}
-	
-	
+
 	LinkedHashMap<String, String> hmap = new LinkedHashMap<String, String>();
 	ResultData RD = new ResultData();
 
@@ -49,24 +50,22 @@ public class CustomReporter2 implements IReporter {
 
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
 		for (ISuite suite : iSuite) {
-			
+
 			Map<String, ISuiteResult> suiteResults = suite.getResults();
-			
+
 			for (String testName : suiteResults.keySet()) {
 				ISuiteResult suiteResult = suiteResults.get(testName);
 
 				ITestContext testContext = suiteResult.getTestContext();
 				getResultSize(testContext);
-				
-				
 
 				// pass
 				IResultMap passResult = testContext.getPassedTests();
 				Set<ITestResult> testsPassed = passResult.getAllResults();
 				if (testsPassed.size() > 0) {
-					System.out.println("---"+ testsPassed.size());
+					System.out.println("---" + testsPassed.size());
 					for (ITestResult testResult : testsPassed) {
-						getData(testResult);
+						// getData(testResult);
 					}
 				}
 
@@ -75,45 +74,29 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
 					for (ITestResult testResult : testsFailed) {
-						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
-
-						RD.setFailedList(ReportUtil.getTime(testResult.getStartMillis()));
-						RD.setFailedList(ReportUtil.getPackageName(testResult.getInstanceName()));
-						RD.setFailedList(testResult.getName());
+						getData(testResult);
+						System.out.println("");
 						if (testResult.getThrowable().toString().length() > 0) {
-							RD.setFailedList(testResult.getThrowable().toString());
-						} else {
-							RD.setFailedList(" ");
+							System.out.println(testResult.getThrowable().toString());
 						}
-						System.out.println(" ");
-						String[] tcGroup = testResult.getMethod().getGroups();
-						for (String ss : tcGroup) {
-							System.out.print(ss + ",  ");
-						}
+
 					}
 
 				}
 
+				System.out.println("______________________________________");
 				// SkipTest Case
-			/*	IResultMap skipResult = testContext.getSkippedTests();
+				IResultMap skipResult = testContext.getSkippedTests();
 				Set<ITestResult> testsSkip = skipResult.getAllResults();
 				if (testsSkip.size() > 0) {
 					for (ITestResult testResult : testsSkip) {
-						System.out.println(ReportUtil.getTime(testResult.getStartMillis())+ " -> " + ReportUtil.getTime(testResult.getEndMillis()));
-						RD.setSkippedList(ReportUtil.getTime(testResult.getStartMillis()));
-						RD.setSkippedList(ReportUtil.getPackageName(testResult.getInstanceName()));
-						RD.setSkippedList(testResult.getName());
+						getData(testResult);
+						System.out.println("");
 						if (testResult.getThrowable().toString().length() > 0) {
-							RD.setSkippedList(testResult.getThrowable().toString());
-						} else {
-							RD.setSkippedList(" ");
-						}
-						String[] tcGroup = testResult.getMethod().getGroups();
-						for (String ss : tcGroup) {
-							System.out.println(ss);
+							System.out.println(testResult.getThrowable().toString());
 						}
 					}
-				}*/
+				}
 			}
 		}
 
