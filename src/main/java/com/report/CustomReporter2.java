@@ -25,13 +25,14 @@ public class CustomReporter2 implements IReporter {
 		System.out.println("getSkippedConfigurations Test Case -> " + context.getSkippedConfigurations().size());
 		System.out.println("getFailedConfigurations Test Case -> " + context.getFailedConfigurations().size());
 		System.out.println("getPassedConfigurations Test Case -> " + context.getPassedConfigurations().size());
-		
+
 	}
 
 	public void getData(ITestResult testResult) {
 		System.out.println(" ");
 		System.out.println("============================================");
-		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "+ ReportUtil.getTime(testResult.getEndMillis()));
+		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "
+				+ ReportUtil.getTime(testResult.getEndMillis()));
 		System.out.println("Package  ->   " + testResult.getInstanceName());
 		System.out.println("Method Name -> " + testResult.getName());
 		if (testResult.getMethod().getDescription() != null)
@@ -54,9 +55,9 @@ public class CustomReporter2 implements IReporter {
 
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
 		for (ISuite suite : iSuite) {
-            String suiteName = suite.getName();
-            System.out.println();            
-            
+			String suiteName = suite.getName();
+			System.out.println();
+
 			Map<String, ISuiteResult> suiteResults = suite.getResults();
 
 			for (String testName : suiteResults.keySet()) {
@@ -69,9 +70,8 @@ public class CustomReporter2 implements IReporter {
 				IResultMap passResult = testContext.getPassedTests();
 				Set<ITestResult> testsPassed = passResult.getAllResults();
 				if (testsPassed.size() > 0) {
-					System.out.println("---" + testsPassed.size());
 					for (ITestResult testResult : testsPassed) {
-					//	getData(testResult);
+						getData(testResult);
 					}
 				}
 
@@ -82,7 +82,6 @@ public class CustomReporter2 implements IReporter {
 				if (testsFailed.size() > 0) {
 					for (ITestResult testResult : testsFailed) {
 						getData(testResult);
-						System.out.println("");
 						if (testResult.getThrowable().toString().length() > 0) {
 							System.out.println(testResult.getThrowable().toString());
 						}
@@ -91,20 +90,29 @@ public class CustomReporter2 implements IReporter {
 
 				}
 
-				System.out.println("______________________________SkipTest Case______________________________________________");
+				System.out.println(
+						"______________________________SkipTest Case______________________________________________");
 				// SkipTest Case
 				IResultMap skipResult = testContext.getSkippedTests();
 				Set<ITestResult> testsSkip = skipResult.getAllResults();
 				if (testsSkip.size() > 0) {
 					for (ITestResult testResult : testsSkip) {
 						getData(testResult);
-						
-						System.out.println(testResult.getStatus());
-						if (testResult.getThrowable().toString().length() > 0) {
+
+						int i = 0;
+						try {
+							i = testResult.getThrowable().toString().length();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						System.out.println(i + "*********");
+						if (i > 0) {
 							System.out.println(testResult.getThrowable().toString());
 						}
 					}
 				}
+
 			}
 		}
 
