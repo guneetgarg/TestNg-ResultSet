@@ -18,7 +18,7 @@ public class SkipTestCase3 {
 
 	@Test(groups = { "group skipATest", "tmp" })
 	public void skipATest3() throws InterruptedException {
-		Thread.sleep(5000);
+	//	Thread.sleep(5000);
 		Assert.fail();
 		throw new SkipException("Skipping - This is not ready for testing ");
 	}

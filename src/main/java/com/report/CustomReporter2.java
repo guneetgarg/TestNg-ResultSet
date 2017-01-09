@@ -15,6 +15,14 @@ import org.testng.ITestResult;
 import org.testng.xml.XmlSuite;
 
 public class CustomReporter2 implements IReporter {
+	
+	public void getResultSize(ITestContext context){
+		System.out.println("\n***********************************************");
+		System.out.println("Passed Test Case -> " + context.getPassedTests().size());
+		System.out.println("Failed Test Case -> " + context.getFailedTests().size());
+		System.out.println("Skipped Test Case -> " + context.getSkippedTests().size());
+	}
+	
 	LinkedHashMap<String, String> hmap = new LinkedHashMap<String, String>();
 	ResultData RD = new ResultData();
 
@@ -29,10 +37,12 @@ public class CustomReporter2 implements IReporter {
 				ISuiteResult suiteResult = suiteResults.get(testName);
 
 				ITestContext testContext = suiteResult.getTestContext();
-
-				System.out.println("Passed Test Case -> " + testContext.getPassedTests().size());
-				System.out.println("Failed Test Case -> " + testContext.getFailedTests().size());
-				System.out.println("Skipped Test Case -> " + testContext.getSkippedTests().size());
+				getResultSize(testContext);
+				
+				
+//				System.out.println("Passed Test Case -> " + testContext.getPassedTests().size());
+//				System.out.println("Failed Test Case -> " + testContext.getFailedTests().size());
+//				System.out.println("Skipped Test Case -> " + testContext.getSkippedTests().size());
 
 				// hmap.put("Start Time",testContext.getStartDate().toString());
 				// hmap.put("End Time",testContext.getEndDate().toString());
