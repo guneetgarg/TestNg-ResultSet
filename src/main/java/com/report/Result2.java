@@ -16,10 +16,6 @@ public class Result2 {
 
 		map.put(3, new ResultSet("aa1", "bb1", "cc1", "dd1"));
 
-		// for(Map.Entry<String, ResultSet> m: map.keySet()){
-		// System.out.println(m + " --> " );
-		// }
-
 		for (Map.Entry<Integer, ResultSet> entry : map.entrySet()) {
 			ResultSet b = entry.getValue();
 

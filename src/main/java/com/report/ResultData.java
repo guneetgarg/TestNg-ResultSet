@@ -24,7 +24,7 @@ public class ResultData {
 	LinkedList<String> failList = new LinkedList<String>();
 	LinkedList<String> skipList = new LinkedList<String>();
 
-	Map<Integer, ArrayList<String>> passHashMap = new LinkedHashMap<Integer,ArrayList<String>>();
+	Map<Integer, ResultSet> passHashMap = new LinkedHashMap<Integer,ResultSet>();
 
 	// pass arraylist
 	public LinkedList<String> getPassedList() {
@@ -35,12 +35,12 @@ public class ResultData {
 //		this.passList.add(pass);
 //	}
 
-	public void setPassedList(ArrayList<String> pass) {
-		this.passHashMap.put(count,pass);
+	public void setPassedList(LinkedHashMap<String, String> pass) {
+		this.passHashMap.put(count,new ResultSet(pass.get(DataType.PackageName.toString()), pass.get(DataType.MethodName.toString()), pass.get(DataType.DescriptionMethod.toString()), pass.get(DataType.GroupName.toString())));
 		count++;
 	}
 
-	public Map<Integer, ArrayList<String>> getPassed() {
+	public Map<Integer, ResultSet> getPassed() {
 		return passHashMap;
 	}
 
