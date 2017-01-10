@@ -3,9 +3,10 @@ package com.report;
 import java.util.LinkedList;
 
 import org.testng.ITestContext;
-import org.testng.Reporter;
 
 public class ResultData {
+	
+	enum DataType { PackageName, MethodName, DescriptionMethod}  
 
 	public Integer passCount = 0;
 	public Integer failCount = 0;
