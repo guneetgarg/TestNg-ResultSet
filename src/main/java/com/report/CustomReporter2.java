@@ -53,8 +53,10 @@ public class CustomReporter2 implements IReporter {
 			} catch (Exception e) {
 			}
 			if (i > 0) {
-				System.out.println(testResult.getThrowable().toString());
+			//	System.out.println(testResult.getThrowable().toString());
+				hmap.put(DataType.ExceptionMessage.toString(), testResult.getThrowable().toString());
 			}
+			RD.setSkippedList(hmap);
 		} else if (res.equalsIgnoreCase("pass")) {
 			RD.setPassedList(hmap);
 		}
@@ -102,7 +104,7 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsSkip = skipResult.getAllResults();
 				if (testsSkip.size() > 0) {
 					for (ITestResult testResult : testsSkip) {
-						// getData(testResult, "skip");
+						getData(testResult, "skip");
 					}
 				}
 
@@ -117,6 +119,12 @@ public class CustomReporter2 implements IReporter {
 		}
 		System.out.println("------------------------------------------------------------");
 		for (Map.Entry<Integer, ResultSet> entry : RD.getFailesList().entrySet()) {
+			ResultSet b = entry.getValue();
+			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
+					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
+		}
+		System.out.println("------------------------------------------------------------");
+		for (Map.Entry<Integer, ResultSet> entry : RD.getSkippedList().entrySet()) {
 			ResultSet b = entry.getValue();
 			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
 					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);

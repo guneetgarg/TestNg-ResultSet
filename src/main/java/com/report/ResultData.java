@@ -1,9 +1,7 @@
 package com.report;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import org.testng.ITestContext;
@@ -16,6 +14,7 @@ public class ResultData {
 
 	static int count = 0;
 	static int countFail = 0;
+	static int countSkip = 0;
 
 	public Integer passCount = 0;
 	public Integer failCount = 0;
@@ -27,6 +26,7 @@ public class ResultData {
 
 	Map<Integer, ResultSet> passHashMap = new LinkedHashMap<Integer, ResultSet>();
 	Map<Integer, ResultSet> failHashMap = new LinkedHashMap<Integer, ResultSet>();
+	Map<Integer, ResultSet> skipHashMap = new LinkedHashMap<Integer, ResultSet>();
 
 	// pass arraylist
 	public LinkedList<String> getPassedList() {
@@ -58,12 +58,16 @@ public class ResultData {
 	}
 
 	// Skip arraylist
-	public LinkedList<String> getSkippedList() {
-		return skipList;
+	public Map<Integer, ResultSet> getSkippedList() {
+		return skipHashMap;
 	}
 
-	public void setSkippedList(String skip) {
-		this.skipList.add(skip);
+	public void setSkippedList(LinkedHashMap<String, String> skip) {
+		this.skipHashMap.put(countSkip,
+				new ResultSet(skip.get(DataType.PackageName.toString()), skip.get(DataType.MethodName.toString()),
+						skip.get(DataType.DescriptionMethod.toString()), skip.get(DataType.GroupName.toString()),
+						skip.get(DataType.ExceptionMessage.toString())));
+		countSkip++;
 	}
 
 	// pass count
