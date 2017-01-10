@@ -16,7 +16,7 @@ import org.testng.xml.XmlSuite;
 
 public class CustomReporter implements IReporter {
 	LinkedHashMap<String, String> hmap = new LinkedHashMap<String, String>();
-	ResultData RD = new ResultData();
+	ResultData1 RD = new ResultData1();
 
 	LinkedHashSet<String> passList = new LinkedHashSet<String>();
 

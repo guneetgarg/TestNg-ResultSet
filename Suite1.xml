@@ -5,8 +5,7 @@
 	<test name="Scenario 1">
 		<classes>
 			<class name="com.script1.TestCase1" />
-			<class name="com.script1.TestCase2" />
+<!-- 			<class name="com.script1.TestCase2" /> -->
 		</classes>
 	</test>
 </suite>
-
