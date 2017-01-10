@@ -1,7 +1,6 @@
 package com.report;
 
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 import org.testng.ITestContext;
@@ -20,19 +19,11 @@ public class ResultData {
 	public Integer failCount = 0;
 	public Integer SkipCount = 0;
 
-	LinkedList<String> passList = new LinkedList<String>();
-	LinkedList<String> failList = new LinkedList<String>();
-	LinkedList<String> skipList = new LinkedList<String>();
-
 	Map<Integer, ResultSet> passHashMap = new LinkedHashMap<Integer, ResultSet>();
 	Map<Integer, ResultSet> failHashMap = new LinkedHashMap<Integer, ResultSet>();
 	Map<Integer, ResultSet> skipHashMap = new LinkedHashMap<Integer, ResultSet>();
 
 	// pass arraylist
-	public LinkedList<String> getPassedList() {
-		return passList;
-	}
-
 	public void setPassedList(LinkedHashMap<String, String> pass) {
 		this.passHashMap.put(count,
 				new ResultSet(pass.get(DataType.PackageName.toString()), pass.get(DataType.MethodName.toString()),
