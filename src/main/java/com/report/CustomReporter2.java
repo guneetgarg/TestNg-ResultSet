@@ -38,8 +38,7 @@ public class CustomReporter2 implements IReporter {
 			hmap.put(DataType.DescriptionMethod.toString(), " ");
 		}
 
-		String[] tcGroup = testResult.getMethod().getGroups();
-		hmap.put(DataType.GroupName.toString(), Arrays.toString(tcGroup));
+		hmap.put(DataType.GroupName.toString(), Arrays.toString(testResult.getMethod().getGroups()));
 
 		if (res.equalsIgnoreCase("fail")) {
 			if (testResult.getThrowable().toString().length() > 0) {
@@ -53,7 +52,6 @@ public class CustomReporter2 implements IReporter {
 			} catch (Exception e) {
 			}
 			if (i > 0) {
-			//	System.out.println(testResult.getThrowable().toString());
 				hmap.put(DataType.ExceptionMessage.toString(), testResult.getThrowable().toString());
 			}
 			RD.setSkippedList(hmap);
@@ -86,19 +84,14 @@ public class CustomReporter2 implements IReporter {
 				}
 
 				// Failed Test Case
-				System.out.println(
-						"______________________Failed Case______________________________________________________");
 				IResultMap failedResult = testContext.getFailedTests();
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
 					for (ITestResult testResult : testsFailed) {
 						getData(testResult, "fail");
 					}
-
 				}
 
-				System.out.println(
-						"______________________________SkipTest Case______________________________________________");
 				// SkipTest Case
 				IResultMap skipResult = testContext.getSkippedTests();
 				Set<ITestResult> testsSkip = skipResult.getAllResults();
