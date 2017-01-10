@@ -100,11 +100,12 @@ public class CustomReporter2 implements IReporter {
 						getData(testResult, "skip");
 					}
 				}
-
+				System.out.println(testContext.getIncludedGroups().length);
+				System.out.println(Arrays.toString(testContext.getIncludedGroups()));
 			}
 		}
 
-		for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet()) {
+/*		for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet()) {
 			ResultSet b = entry.getValue();
 
 			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
@@ -122,6 +123,6 @@ public class CustomReporter2 implements IReporter {
 			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
 					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
 		}
-
+*/
 	}
 }

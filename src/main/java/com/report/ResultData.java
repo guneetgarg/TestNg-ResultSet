@@ -11,7 +11,7 @@ public class ResultData {
 		PackageName, MethodName, DescriptionMethod, GroupName, ExceptionMessage
 	}
 
-	static int count = 0;
+	static int countPass = 0;
 	static int countFail = 0;
 	static int countSkip = 0;
 
@@ -25,10 +25,10 @@ public class ResultData {
 
 	// pass arraylist
 	public void setPassedList(LinkedHashMap<String, String> pass) {
-		this.passHashMap.put(count,
+		this.passHashMap.put(countPass,
 				new ResultSet(pass.get(DataType.PackageName.toString()), pass.get(DataType.MethodName.toString()),
 						pass.get(DataType.DescriptionMethod.toString()), pass.get(DataType.GroupName.toString()), " "));
-		count++;
+		countPass++;
 	}
 
 	public Map<Integer, ResultSet> getPassed() {
