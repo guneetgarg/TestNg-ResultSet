@@ -130,8 +130,6 @@ public class CustomReporter2 implements IReporter {
 		}
 
 		for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet()) {
-
-			System.out.println(entry.getKey() + " --> " + entry.getValue());
 			ResultSet b = entry.getValue();
 
 			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
