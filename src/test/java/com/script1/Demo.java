@@ -60,6 +60,6 @@ public class Demo {
 		String env = (getXmlNodeValue(
 				Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getSuite().getFileName(),
 				"parameter", "config-file"));
-		return "";
+		return env;
 	}
 }
