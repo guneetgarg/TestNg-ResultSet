@@ -71,9 +71,11 @@ public class CustomReporter2 implements IReporter {
 			}
 		}
 
-		for (Map.Entry m : hmap.entrySet()) {
-			System.out.println(m.getKey() + " --> " + m.getValue());
-		}
+	//	RD.setPassedList(hmap);
+		
+//		for (Map.Entry m : hmap.entrySet()) {
+//			System.out.println(m.getKey() + " --> " + m.getValue());
+//		}
 
 	}
 
@@ -127,5 +129,17 @@ public class CustomReporter2 implements IReporter {
 			}
 		}
 
+		for (Map.Entry m : hmap.entrySet()) {
+			System.out.println(m.getKey() + " --> " + m.getValue());
+		}
+
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }

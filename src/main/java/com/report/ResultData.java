@@ -1,13 +1,21 @@
 package com.report;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import org.testng.ITestContext;
 
 public class ResultData {
-	
-	enum DataType { PackageName, MethodName, DescriptionMethod, GroupName}  
 
+	enum DataType {
+		PackageName, MethodName, DescriptionMethod, GroupName
+	}
+
+	static int count = 0;
+	
 	public Integer passCount = 0;
 	public Integer failCount = 0;
 	public Integer SkipCount = 0;
@@ -16,13 +24,24 @@ public class ResultData {
 	LinkedList<String> failList = new LinkedList<String>();
 	LinkedList<String> skipList = new LinkedList<String>();
 
+	Map<Integer, ArrayList<String>> passHashMap = new LinkedHashMap<Integer,ArrayList<String>>();
+
 	// pass arraylist
 	public LinkedList<String> getPassedList() {
 		return passList;
 	}
 
-	public void setPassedList(String pass) {
-		this.passList.add(pass);
+//	public void setPassedList(String pass) {
+//		this.passList.add(pass);
+//	}
+
+	public void setPassedList(ArrayList<String> pass) {
+		this.passHashMap.put(count,pass);
+		count++;
+	}
+
+	public Map<Integer, ArrayList<String>> getPassed() {
+		return passHashMap;
 	}
 
 	// fail arraylist
