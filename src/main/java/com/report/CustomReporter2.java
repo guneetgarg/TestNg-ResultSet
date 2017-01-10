@@ -17,22 +17,20 @@ import org.testng.xml.XmlSuite;
 public class CustomReporter2 implements IReporter {
 
 	public void getResultSize(ITestContext context) {
-		System.out.println("\n***********************************************");
-		System.out.println("Passed Test Case -> " + context.getPassedTests().size());
-		System.out.println("Failed Test Case -> " + context.getFailedTests().size());
-		System.out.println("Skipped Test Case -> " + context.getSkippedTests().size());
+		RD.setPassCount(context);
+		RD.setFailCount(context);
+		RD.setSkipCount(context);
+
 	}
 
 	public void getData(ITestResult testResult, String res) {
 		System.out.println(" ");
 		System.out.println("============================================");
-		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "
-				+ ReportUtil.getTime(testResult.getEndMillis()));
+		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "+ ReportUtil.getTime(testResult.getEndMillis()));
 		System.out.println("Package  ->   " + testResult.getInstanceName());
 		System.out.println("Method Name -> " + testResult.getName());
 		if (testResult.getMethod().getDescription() != null)
-			System.out.println(
-					"Description --> " + testResult.getName() + "  -> " + testResult.getMethod().getDescription());
+			System.out.println("Description --> " + testResult.getName() + "  -> " + testResult.getMethod().getDescription());
 		else {
 			System.out.println("No Description");
 		}
@@ -65,7 +63,7 @@ public class CustomReporter2 implements IReporter {
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
 		for (ISuite suite : iSuite) {
 			String suiteName = suite.getName();
-			System.out.println(suiteName);
+			System.out.println("___________________--------"+suiteName);
 
 			Map<String, ISuiteResult> suiteResults = suite.getResults();
 

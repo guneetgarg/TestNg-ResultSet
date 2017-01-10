@@ -6,11 +6,10 @@
 		<listener class-name="com.report.CustomReporter2" />
 	</listeners>
 	<parameter name="config-file" value="config.properties" />
-	
+
 	<suite-files>
 		<suite-file path="Suite1.xml" />
 		<suite-file path="Suite2.xml" />
 	</suite-files>
 
 </suite>
-

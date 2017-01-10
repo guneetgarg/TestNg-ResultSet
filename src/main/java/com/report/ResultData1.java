@@ -2,10 +2,7 @@ package com.report;
 
 import java.util.LinkedList;
 
-import org.testng.ITestContext;
-import org.testng.Reporter;
-
-public class ResultData {
+public class ResultData1 {
 
 	public Integer passCount = 0;
 	public Integer failCount = 0;
@@ -47,8 +44,8 @@ public class ResultData {
 		return passCount;
 	}
 
-	public void setPassCount(ITestContext context) {
-		this.passCount += context.getPassedTests().size();
+	public void setPassCount(Integer passCount) {
+		this.passCount += passCount;
 	}
 
 	// fail count
@@ -56,8 +53,8 @@ public class ResultData {
 		return failCount;
 	}
 
-	public void setFailCount(ITestContext context) {
-		this.failCount += context.getFailedTests().size();
+	public void setFailCount(Integer failCount) {
+		this.failCount += failCount;
 	}
 
 	// skip count
@@ -65,8 +62,8 @@ public class ResultData {
 		return SkipCount;
 	}
 
-	public void setSkipCount(ITestContext context) {
-		this.SkipCount += context.getSkippedTests().size();
+	public void setSkipCount(Integer skipCount) {
+		this.SkipCount += skipCount;
 	}
 
 }
