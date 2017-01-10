@@ -17,10 +17,10 @@ import org.testng.xml.XmlSuite;
 import com.report.ResultData.DataType;
 
 public class CustomReporter2 implements IReporter {
-	
+
 	LinkedHashMap<String, String> hmap = new LinkedHashMap<String, String>();
 	ResultData RD = new ResultData();
-	
+
 	public void getResultSize(ITestContext context) {
 		RD.setPassCount(context);
 		RD.setFailCount(context);
@@ -29,36 +29,22 @@ public class CustomReporter2 implements IReporter {
 	}
 
 	public void getData(ITestResult testResult, String res) {
-		/*System.out.println(" ");
-		System.out.println("============================================");
-		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "+ ReportUtil.getTime(testResult.getEndMillis()));
-		System.out.println("Package  ->   " + testResult.getInstanceName());
-		System.out.println("Method Name -> " + testResult.getName());
-*/		
 		hmap.put(DataType.PackageName.toString(), testResult.getInstanceName());
 		hmap.put(DataType.MethodName.toString(), testResult.getName());
-		
-		if (testResult.getMethod().getDescription() != null){	
-//			System.out.println("Description --> " + testResult.getName() + "  -> " + testResult.getMethod().getDescription());
-			hmap.put(DataType.DescriptionMethod.toString(), testResult.getName());		
-		}else {
-//			System.out.println("No Description");
+
+		if (testResult.getMethod().getDescription() != null) {
+			hmap.put(DataType.DescriptionMethod.toString(), testResult.getName());
+		} else {
 			hmap.put(DataType.DescriptionMethod.toString(), " ");
 		}
 
-		
 		String[] tcGroup = testResult.getMethod().getGroups();
-	//	System.out.println("+++++++++++++++ "+Arrays.toString(tcGroup));
-		hmap.put(DataType.GroupName.toString(),Arrays.toString(tcGroup));
-		
-//		
-//		System.out.print("Number of Group --> " + tcGroup.length);
-//		for (String ss : tcGroup) {
-//			System.out.print(ss + ",  ");
-//		}
+		hmap.put(DataType.GroupName.toString(), Arrays.toString(tcGroup));
+
 		if (res.equalsIgnoreCase("fail")) {
 			if (testResult.getThrowable().toString().length() > 0) {
-				System.out.println(testResult.getThrowable().toString());
+				hmap.put(DataType.ExceptionMessage.toString(), testResult.getThrowable().toString());
+				RD.setFailedList(hmap);
 			}
 		} else if (res.equalsIgnoreCase("skip")) {
 			int i = 0;
@@ -69,22 +55,16 @@ public class CustomReporter2 implements IReporter {
 			if (i > 0) {
 				System.out.println(testResult.getThrowable().toString());
 			}
+		} else if (res.equalsIgnoreCase("pass")) {
+			RD.setPassedList(hmap);
 		}
 
-		RD.setPassedList(hmap);
-		
-//		for (Map.Entry m : hmap.entrySet()) {
-//			System.out.println(m.getKey() + " --> " + m.getValue());
-//		}
-
 	}
-
-	
 
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
 		for (ISuite suite : iSuite) {
 			String suiteName = suite.getName();
-			System.out.println("___________________--------"+suiteName);
+			System.out.println("___________________--------" + suiteName);
 
 			Map<String, ISuiteResult> suiteResults = suite.getResults();
 
@@ -100,17 +80,17 @@ public class CustomReporter2 implements IReporter {
 				if (testsPassed.size() > 0) {
 					for (ITestResult testResult : testsPassed) {
 						getData(testResult, "pass");
-						System.out.println("================================================");
 					}
 				}
 
 				// Failed Test Case
-				System.out.println("______________________Failed Case______________________________________________________");
+				System.out.println(
+						"______________________Failed Case______________________________________________________");
 				IResultMap failedResult = testContext.getFailedTests();
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
 					for (ITestResult testResult : testsFailed) {
-			//			getData(testResult, "fail");
+						getData(testResult, "fail");
 					}
 
 				}
@@ -122,7 +102,7 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsSkip = skipResult.getAllResults();
 				if (testsSkip.size() > 0) {
 					for (ITestResult testResult : testsSkip) {
-					//getData(testResult, "skip");
+						// getData(testResult, "skip");
 					}
 				}
 
@@ -135,11 +115,12 @@ public class CustomReporter2 implements IReporter {
 			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
 					+ b.PackageName + " -> " + b.GroupName);
 		}
-		
-		
-		
-		
-		
-		
+		System.out.println("------------------------------------------------------------");
+		for (Map.Entry<Integer, ResultSet> entry : RD.getFailesList().entrySet()) {
+			ResultSet b = entry.getValue();
+			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
+					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
+		}
+
 	}
 }
