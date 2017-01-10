@@ -6,7 +6,7 @@ import org.testng.ITestContext;
 
 public class ResultData {
 	
-	enum DataType { PackageName, MethodName, DescriptionMethod}  
+	enum DataType { PackageName, MethodName, DescriptionMethod, GroupName}  
 
 	public Integer passCount = 0;
 	public Integer failCount = 0;

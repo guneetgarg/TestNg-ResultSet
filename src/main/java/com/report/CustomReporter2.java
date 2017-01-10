@@ -29,18 +29,14 @@ public class CustomReporter2 implements IReporter {
 	}
 
 	public void getData(ITestResult testResult, String res) {
-		System.out.println(" ");
+		/*System.out.println(" ");
 		System.out.println("============================================");
 		System.out.println("Start Time " + ReportUtil.getTime(testResult.getStartMillis()) + " End Time "+ ReportUtil.getTime(testResult.getEndMillis()));
 		System.out.println("Package  ->   " + testResult.getInstanceName());
 		System.out.println("Method Name -> " + testResult.getName());
-		
+*/		
 		hmap.put(DataType.PackageName.toString(), testResult.getInstanceName());
 		hmap.put(DataType.MethodName.toString(), testResult.getName());
-		
-		
-		
-		
 		
 		if (testResult.getMethod().getDescription() != null){	
 //			System.out.println("Description --> " + testResult.getName() + "  -> " + testResult.getMethod().getDescription());
@@ -52,14 +48,14 @@ public class CustomReporter2 implements IReporter {
 
 		
 		String[] tcGroup = testResult.getMethod().getGroups();
-		System.out.println("+++++++++++++++ "+Arrays.toString(tcGroup));
+	//	System.out.println("+++++++++++++++ "+Arrays.toString(tcGroup));
+		hmap.put(DataType.GroupName.toString(),Arrays.toString(tcGroup));
 		
-		
-		
-		System.out.print("Number of Group --> " + tcGroup.length);
-		for (String ss : tcGroup) {
-			System.out.print(ss + ",  ");
-		}
+//		
+//		System.out.print("Number of Group --> " + tcGroup.length);
+//		for (String ss : tcGroup) {
+//			System.out.print(ss + ",  ");
+//		}
 		if (res.equalsIgnoreCase("fail")) {
 			if (testResult.getThrowable().toString().length() > 0) {
 				System.out.println(testResult.getThrowable().toString());
@@ -74,6 +70,11 @@ public class CustomReporter2 implements IReporter {
 				System.out.println(testResult.getThrowable().toString());
 			}
 		}
+
+		for (Map.Entry m : hmap.entrySet()) {
+			System.out.println(m.getKey() + " --> " + m.getValue());
+		}
+
 	}
 
 	
@@ -97,6 +98,7 @@ public class CustomReporter2 implements IReporter {
 				if (testsPassed.size() > 0) {
 					for (ITestResult testResult : testsPassed) {
 						getData(testResult, "pass");
+						System.out.println("================================================");
 					}
 				}
 
