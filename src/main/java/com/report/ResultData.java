@@ -1,5 +1,6 @@
 package com.report;
 
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,6 +23,15 @@ public class ResultData {
 	Map<Integer, ResultSet> passHashMap = new LinkedHashMap<Integer, ResultSet>();
 	Map<Integer, ResultSet> failHashMap = new LinkedHashMap<Integer, ResultSet>();
 	Map<Integer, ResultSet> skipHashMap = new LinkedHashMap<Integer, ResultSet>();
+	HashSet<String> totalGroupName=new HashSet<String>();  
+
+	public HashSet<String> getTotalGroupName() {
+		return totalGroupName;
+	}
+	public void setTotalGroupName(String totalGroupName) {
+		System.out.println("***"+totalGroupName);
+		this.totalGroupName.add(totalGroupName);
+	}
 
 	String os,username;
 	

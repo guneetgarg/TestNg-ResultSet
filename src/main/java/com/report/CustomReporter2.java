@@ -18,9 +18,7 @@ import org.testng.xml.XmlSuite;
 import com.report.ResultData.DataType;
 
 public class CustomReporter2 implements IReporter {
-	
-	HashSet<String> set=new HashSet<String>();  
-	
+
 	LinkedHashMap<String, String> hmap = new LinkedHashMap<String, String>();
 	ResultData RD = new ResultData();
 
@@ -34,7 +32,6 @@ public class CustomReporter2 implements IReporter {
 	public void getData(ITestResult testResult, String res) {
 		System.out.println(testResult.getAttribute("browser"));
 
-		
 		hmap.put(DataType.PackageName.toString(), testResult.getInstanceName());
 		hmap.put(DataType.MethodName.toString(), testResult.getName());
 
@@ -44,12 +41,11 @@ public class CustomReporter2 implements IReporter {
 			hmap.put(DataType.DescriptionMethod.toString(), " ");
 		}
 
-		
 		hmap.put(DataType.GroupName.toString(), Arrays.toString(testResult.getMethod().getGroups()));
-		
+
 		String[] str = testResult.getMethod().getGroups();
 		for (String st : str) {
-			set.add(st);
+			RD.setTotalGroupName(st);
 		}
 		if (res.equalsIgnoreCase("fail")) {
 			if (testResult.getThrowable().toString().length() > 0) {
@@ -74,13 +70,13 @@ public class CustomReporter2 implements IReporter {
 
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
 		System.out.println(s);
-		for (XmlSuite aaa: xmlSuite){
-				System.out.println(aaa.getAllParameters());
+		for (XmlSuite aaa : xmlSuite) {
+			System.out.println(aaa.getAllParameters());
 		}
-		
+
 		RD.setOs(System.getProperty("os.name"));
-		RD.setUsername(System.getProperty("user.name"));		
-		
+		RD.setUsername(System.getProperty("user.name"));
+
 		for (ISuite suite : iSuite) {
 			String suiteName = suite.getName();
 			System.out.println(suite.getParameter("browser"));
@@ -100,7 +96,7 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsPassed = passResult.getAllResults();
 				if (testsPassed.size() > 0) {
 					for (ITestResult testResult : testsPassed) {
-					//	getData(testResult, "pass");
+						getData(testResult, "pass");
 					}
 				}
 
@@ -109,7 +105,7 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
 					for (ITestResult testResult : testsFailed) {
-				//		getData(testResult, "fail");
+						getData(testResult, "fail");
 					}
 				}
 
@@ -118,7 +114,7 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsSkip = skipResult.getAllResults();
 				if (testsSkip.size() > 0) {
 					for (ITestResult testResult : testsSkip) {
-				//		getData(testResult, "skip");
+						getData(testResult, "skip");
 					}
 				}
 				System.out.println(testContext.getIncludedGroups().length);
@@ -126,30 +122,31 @@ public class CustomReporter2 implements IReporter {
 			}
 		}
 
-		for(String st : set){
+		System.out.println("******************************************");
+		System.out.println(RD.getTotalGroupName().size());
+		for (String st : RD.getTotalGroupName()) {
 			System.out.println(st);
 		}
-		
-		
-			
-/*		for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet()) {
-			ResultSet b = entry.getValue();
 
-			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
-					+ b.PackageName + " -> " + b.GroupName);
-		}
-		System.out.println("------------------------------------------------------------");
-		for (Map.Entry<Integer, ResultSet> entry : RD.getFailesList().entrySet()) {
-			ResultSet b = entry.getValue();
-			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
-					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
-		}
-		System.out.println("------------------------------------------------------------");
-		for (Map.Entry<Integer, ResultSet> entry : RD.getSkippedList().entrySet()) {
-			ResultSet b = entry.getValue();
-			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
-					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
-		}
-*/
+		/*
+		 * for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet())
+		 * { ResultSet b = entry.getValue();
+		 * 
+		 * System.out.println(entry.getKey() + " -> " + b.DescriptionMethod +
+		 * " -> " + b.MethodName + " -> " + b.PackageName + " -> " +
+		 * b.GroupName); } System.out.println(
+		 * "------------------------------------------------------------"); for
+		 * (Map.Entry<Integer, ResultSet> entry : RD.getFailesList().entrySet())
+		 * { ResultSet b = entry.getValue(); System.out.println(entry.getKey() +
+		 * " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> " +
+		 * b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
+		 * } System.out.println(
+		 * "------------------------------------------------------------"); for
+		 * (Map.Entry<Integer, ResultSet> entry :
+		 * RD.getSkippedList().entrySet()) { ResultSet b = entry.getValue();
+		 * System.out.println(entry.getKey() + " -> " + b.DescriptionMethod +
+		 * " -> " + b.MethodName + " -> " + b.PackageName + " -> " + b.GroupName
+		 * + " -> " + b.ExceptionMessage); }
+		 */
 	}
 }
