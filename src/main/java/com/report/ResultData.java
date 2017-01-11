@@ -23,6 +23,22 @@ public class ResultData {
 	Map<Integer, ResultSet> failHashMap = new LinkedHashMap<Integer, ResultSet>();
 	Map<Integer, ResultSet> skipHashMap = new LinkedHashMap<Integer, ResultSet>();
 
+	String os,username;
+	
+	public String getOs() {
+		return os;
+	}
+	public void setOs(String os) {
+		this.os = os;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	// pass arraylist
 	public void setPassedList(LinkedHashMap<String, String> pass) {
 		this.passHashMap.put(countPass,

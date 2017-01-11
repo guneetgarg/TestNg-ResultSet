@@ -73,6 +73,14 @@ public class CustomReporter2 implements IReporter {
 	}
 
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
+		System.out.println(s);
+		for (XmlSuite aaa: xmlSuite){
+				System.out.println(aaa.getAllParameters());
+		}
+		
+		RD.setOs(System.getProperty("os.name"));
+		RD.setUsername(System.getProperty("user.name"));		
+		
 		for (ISuite suite : iSuite) {
 			String suiteName = suite.getName();
 			System.out.println(suite.getParameter("browser"));
@@ -92,7 +100,7 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsPassed = passResult.getAllResults();
 				if (testsPassed.size() > 0) {
 					for (ITestResult testResult : testsPassed) {
-						getData(testResult, "pass");
+					//	getData(testResult, "pass");
 					}
 				}
 
@@ -101,7 +109,7 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsFailed = failedResult.getAllResults();
 				if (testsFailed.size() > 0) {
 					for (ITestResult testResult : testsFailed) {
-						getData(testResult, "fail");
+				//		getData(testResult, "fail");
 					}
 				}
 
@@ -110,7 +118,7 @@ public class CustomReporter2 implements IReporter {
 				Set<ITestResult> testsSkip = skipResult.getAllResults();
 				if (testsSkip.size() > 0) {
 					for (ITestResult testResult : testsSkip) {
-						getData(testResult, "skip");
+				//		getData(testResult, "skip");
 					}
 				}
 				System.out.println(testContext.getIncludedGroups().length);

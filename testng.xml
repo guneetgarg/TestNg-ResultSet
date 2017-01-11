@@ -7,6 +7,19 @@
 	</listeners>
 	<parameter name="config-file" value="config.properties" />
 
+	<test name="Scenario 12">
+	<parameter name="browser" value="Firefox2" />
+		<classes>
+			<class name="com.script1.TestCase1" />
+			<class name="com.script1.TestCase2" />
+		</classes>
+	</test>
+	<test name="Scenario 11">
+	<parameter name="browser" value="Firefox1" />
+		<classes>
+			<class name="com.script1.TestCase2" />
+		</classes>
+	</test>
 	<suite-files>
 		<suite-file path="Suite1.xml" />
 		<suite-file path="Suite2.xml" />
