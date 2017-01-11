@@ -3,6 +3,7 @@
 <suite name="Simple Reporter Suite 1">
 
 	<test name="Scenario 1">
+	<parameter name="browser" value="Firefox" />
 		<classes>
 			<class name="com.script1.TestCase1" />
 			<class name="com.script1.TestCase2" />

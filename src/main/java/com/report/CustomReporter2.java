@@ -1,6 +1,7 @@
 package com.report;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,9 @@ import org.testng.xml.XmlSuite;
 import com.report.ResultData.DataType;
 
 public class CustomReporter2 implements IReporter {
-
+	
+	HashSet<String> set=new HashSet<String>();  
+	
 	LinkedHashMap<String, String> hmap = new LinkedHashMap<String, String>();
 	ResultData RD = new ResultData();
 
@@ -29,6 +32,9 @@ public class CustomReporter2 implements IReporter {
 	}
 
 	public void getData(ITestResult testResult, String res) {
+		System.out.println(testResult.getAttribute("browser"));
+
+		
 		hmap.put(DataType.PackageName.toString(), testResult.getInstanceName());
 		hmap.put(DataType.MethodName.toString(), testResult.getName());
 
@@ -38,8 +44,13 @@ public class CustomReporter2 implements IReporter {
 			hmap.put(DataType.DescriptionMethod.toString(), " ");
 		}
 
+		
 		hmap.put(DataType.GroupName.toString(), Arrays.toString(testResult.getMethod().getGroups()));
-
+		
+		String[] str = testResult.getMethod().getGroups();
+		for (String st : str) {
+			set.add(st);
+		}
 		if (res.equalsIgnoreCase("fail")) {
 			if (testResult.getThrowable().toString().length() > 0) {
 				hmap.put(DataType.ExceptionMessage.toString(), testResult.getThrowable().toString());
@@ -64,6 +75,8 @@ public class CustomReporter2 implements IReporter {
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
 		for (ISuite suite : iSuite) {
 			String suiteName = suite.getName();
+			System.out.println(suite.getParameter("browser"));
+			System.out.println(suite.getParameter("config-file"));
 			System.out.println("___________________--------" + suiteName);
 
 			Map<String, ISuiteResult> suiteResults = suite.getResults();
@@ -105,6 +118,12 @@ public class CustomReporter2 implements IReporter {
 			}
 		}
 
+		for(String st : set){
+			System.out.println(st);
+		}
+		
+		
+			
 /*		for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet()) {
 			ResultSet b = entry.getValue();
 

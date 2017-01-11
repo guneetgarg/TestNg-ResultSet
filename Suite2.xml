@@ -3,6 +3,8 @@
 <suite name="Simple Reporter Suite 2">
 
 	<test name="Scenario 2">
+		<parameter name="browser" value="chrome" />
+
 		<classes>
 			<class name="com.script2.SkipTestCase3" />
 			<class name="com.script2.TestCase4" />
