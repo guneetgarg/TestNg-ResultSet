@@ -1,7 +1,6 @@
 package com.report;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +9,7 @@ import java.util.Set;
 import org.testng.IReporter;
 import org.testng.IResultMap;
 import org.testng.ISuite;
-import org.testng.ISuiteResult;
+import org.testng.ISuiteResult;	
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.xml.XmlSuite;
