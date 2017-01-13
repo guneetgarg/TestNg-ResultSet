@@ -52,7 +52,6 @@ public class CustomTestGenerate {
 		clssListener.add(CustomReporter2.class);
 		tng.setListenerClasses(clssListener);
 		
-		
 		tng.run();
 	}
 
