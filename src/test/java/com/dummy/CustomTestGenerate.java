@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
@@ -46,7 +47,12 @@ public class CustomTestGenerate {
 		suites.add(suite);
 		TestNG tng = new TestNG();
 		tng.setXmlSuites(suites);
-		tng.addListener(new CustomReporter2());
+		
+		List<Class<? extends ITestNGListener>> clssListener = new ArrayList<>();
+		clssListener.add(CustomReporter2.class);
+		tng.setListenerClasses(clssListener);
+		
+		
 		tng.run();
 	}
 

@@ -127,25 +127,25 @@ public class CustomReporter2 implements IReporter {
 			System.out.println(st);
 		}
 
-		/*
-		 * for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet())
-		 * { ResultSet b = entry.getValue();
-		 * 
-		 * System.out.println(entry.getKey() + " -> " + b.DescriptionMethod +
-		 * " -> " + b.MethodName + " -> " + b.PackageName + " -> " +
-		 * b.GroupName); } System.out.println(
-		 * "------------------------------------------------------------"); for
-		 * (Map.Entry<Integer, ResultSet> entry : RD.getFailesList().entrySet())
-		 * { ResultSet b = entry.getValue(); System.out.println(entry.getKey() +
-		 * " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> " +
-		 * b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
-		 * } System.out.println(
-		 * "------------------------------------------------------------"); for
-		 * (Map.Entry<Integer, ResultSet> entry :
-		 * RD.getSkippedList().entrySet()) { ResultSet b = entry.getValue();
-		 * System.out.println(entry.getKey() + " -> " + b.DescriptionMethod +
-		 * " -> " + b.MethodName + " -> " + b.PackageName + " -> " + b.GroupName
-		 * + " -> " + b.ExceptionMessage); }
-		 */
+		
+		for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet()) {
+			ResultSet b = entry.getValue();
+
+			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
+					+ b.PackageName + " -> " + b.GroupName);
+		}
+		System.out.println("------------------------------------------------------------");
+		for (Map.Entry<Integer, ResultSet> entry : RD.getFailesList().entrySet()) {
+			ResultSet b = entry.getValue();
+			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
+					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
+		}
+		System.out.println("------------------------------------------------------------");
+		for (Map.Entry<Integer, ResultSet> entry : RD.getSkippedList().entrySet()) {
+			ResultSet b = entry.getValue();
+			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
+					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
+		}
+		 
 	}
 }
