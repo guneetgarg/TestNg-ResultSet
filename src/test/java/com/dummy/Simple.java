@@ -27,4 +27,7 @@ public class Simple {
 
 	public void Test5Passed() {
 	}
+	
+	public void Test5Passed() {
+	}
 }
