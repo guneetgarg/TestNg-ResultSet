@@ -1,6 +1,7 @@
 package com.report;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,8 @@ public class CustomReporter2 implements IReporter {
 	}
 
 	public void getData(ITestResult testResult, String res) {
+		System.out.println(testResult.getAttribute("browser"));
+
 		hmap.put(DataType.PackageName.toString(), testResult.getInstanceName());
 		hmap.put(DataType.MethodName.toString(), testResult.getName());
 
@@ -40,6 +43,10 @@ public class CustomReporter2 implements IReporter {
 
 		hmap.put(DataType.GroupName.toString(), Arrays.toString(testResult.getMethod().getGroups()));
 
+		String[] str = testResult.getMethod().getGroups();
+		for (String st : str) {
+			RD.setTotalGroupName(st);
+		}
 		if (res.equalsIgnoreCase("fail")) {
 			if (testResult.getThrowable().toString().length() > 0) {
 				hmap.put(DataType.ExceptionMessage.toString(), testResult.getThrowable().toString());
@@ -62,8 +69,18 @@ public class CustomReporter2 implements IReporter {
 	}
 
 	public void generateReport(List<XmlSuite> xmlSuite, List<ISuite> iSuite, String s) {
+		System.out.println(s);
+		for (XmlSuite aaa : xmlSuite) {
+			System.out.println(aaa.getAllParameters());
+		}
+
+		RD.setOs(System.getProperty("os.name"));
+		RD.setUsername(System.getProperty("user.name"));
+
 		for (ISuite suite : iSuite) {
 			String suiteName = suite.getName();
+			System.out.println(suite.getParameter("browser"));
+			System.out.println(suite.getParameter("config-file"));
 			System.out.println("___________________--------" + suiteName);
 
 			Map<String, ISuiteResult> suiteResults = suite.getResults();
@@ -100,28 +117,36 @@ public class CustomReporter2 implements IReporter {
 						getData(testResult, "skip");
 					}
 				}
-
+				System.out.println(testContext.getIncludedGroups().length);
+				System.out.println(Arrays.toString(testContext.getIncludedGroups()));
 			}
 		}
 
-		for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet()) {
-			ResultSet b = entry.getValue();
-
-			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
-					+ b.PackageName + " -> " + b.GroupName);
-		}
-		System.out.println("------------------------------------------------------------");
-		for (Map.Entry<Integer, ResultSet> entry : RD.getFailesList().entrySet()) {
-			ResultSet b = entry.getValue();
-			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
-					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
-		}
-		System.out.println("------------------------------------------------------------");
-		for (Map.Entry<Integer, ResultSet> entry : RD.getSkippedList().entrySet()) {
-			ResultSet b = entry.getValue();
-			System.out.println(entry.getKey() + " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> "
-					+ b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
+		System.out.println("******************************************");
+		System.out.println(RD.getTotalGroupName().size());
+		for (String st : RD.getTotalGroupName()) {
+			System.out.println(st);
 		}
 
+		/*
+		 * for (Map.Entry<Integer, ResultSet> entry : RD.getPassed().entrySet())
+		 * { ResultSet b = entry.getValue();
+		 * 
+		 * System.out.println(entry.getKey() + " -> " + b.DescriptionMethod +
+		 * " -> " + b.MethodName + " -> " + b.PackageName + " -> " +
+		 * b.GroupName); } System.out.println(
+		 * "------------------------------------------------------------"); for
+		 * (Map.Entry<Integer, ResultSet> entry : RD.getFailesList().entrySet())
+		 * { ResultSet b = entry.getValue(); System.out.println(entry.getKey() +
+		 * " -> " + b.DescriptionMethod + " -> " + b.MethodName + " -> " +
+		 * b.PackageName + " -> " + b.GroupName + " -> " + b.ExceptionMessage);
+		 * } System.out.println(
+		 * "------------------------------------------------------------"); for
+		 * (Map.Entry<Integer, ResultSet> entry :
+		 * RD.getSkippedList().entrySet()) { ResultSet b = entry.getValue();
+		 * System.out.println(entry.getKey() + " -> " + b.DescriptionMethod +
+		 * " -> " + b.MethodName + " -> " + b.PackageName + " -> " + b.GroupName
+		 * + " -> " + b.ExceptionMessage); }
+		 */
 	}
 }

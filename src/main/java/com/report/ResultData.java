@@ -1,7 +1,7 @@
 package com.report;
 
+import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 import org.testng.ITestContext;
@@ -12,7 +12,7 @@ public class ResultData {
 		PackageName, MethodName, DescriptionMethod, GroupName, ExceptionMessage
 	}
 
-	static int count = 0;
+	static int countPass = 0;
 	static int countFail = 0;
 	static int countSkip = 0;
 
@@ -20,24 +20,41 @@ public class ResultData {
 	public Integer failCount = 0;
 	public Integer SkipCount = 0;
 
-	LinkedList<String> passList = new LinkedList<String>();
-	LinkedList<String> failList = new LinkedList<String>();
-	LinkedList<String> skipList = new LinkedList<String>();
-
 	Map<Integer, ResultSet> passHashMap = new LinkedHashMap<Integer, ResultSet>();
 	Map<Integer, ResultSet> failHashMap = new LinkedHashMap<Integer, ResultSet>();
 	Map<Integer, ResultSet> skipHashMap = new LinkedHashMap<Integer, ResultSet>();
+	HashSet<String> totalGroupName=new HashSet<String>();  
 
-	// pass arraylist
-	public LinkedList<String> getPassedList() {
-		return passList;
+	public HashSet<String> getTotalGroupName() {
+		return totalGroupName;
+	}
+	public void setTotalGroupName(String totalGroupName) {
+		System.out.println("***"+totalGroupName);
+		this.totalGroupName.add(totalGroupName);
 	}
 
+	String os,username;
+	
+	public String getOs() {
+		return os;
+	}
+	public void setOs(String os) {
+		this.os = os;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	// pass arraylist
 	public void setPassedList(LinkedHashMap<String, String> pass) {
-		this.passHashMap.put(count,
+		this.passHashMap.put(countPass,
 				new ResultSet(pass.get(DataType.PackageName.toString()), pass.get(DataType.MethodName.toString()),
 						pass.get(DataType.DescriptionMethod.toString()), pass.get(DataType.GroupName.toString()), " "));
-		count++;
+		countPass++;
 	}
 
 	public Map<Integer, ResultSet> getPassed() {
