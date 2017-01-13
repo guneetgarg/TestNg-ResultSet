@@ -14,7 +14,6 @@ public class Simple {
 	}
 
 	public void skipATest3() throws InterruptedException {
-	//	Thread.sleep(5000);
 		Assert.fail();
 		throw new SkipException("Skipping - This is not ready for testing ");
 	}
@@ -22,10 +21,10 @@ public class Simple {
 	public void skipATest4() {
 		throw new SkipException("Skipping - This is not ready for testing ");
 	}
-	
+
 	public void Test3Passed() {
 	}
-	
+
 	public void Test5Passed() {
 	}
 }
