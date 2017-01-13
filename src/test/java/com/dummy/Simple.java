@@ -24,10 +24,4 @@ public class Simple {
 
 	public void Test3Passed() {
 	}
-
-	public void Test5Passed() {
-	}
-	
-	public void Test5Passed() {
-	}
 }
